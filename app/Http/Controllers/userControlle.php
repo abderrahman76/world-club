@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\matchs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,17 +13,12 @@ class userControlle extends Controller
      */
     public function index()
     {
-        $role = Auth::user()->role;
-        // dd($role);
-        if ($role == 0) {
-            return view('user.dashboard');
-        }elseif($role == 1){
-        return view('admin.dashboard');
-        }elseif($role == 2){
-        return view('coach.dashboard');
-        }elseif($role == 3){
-        return view('referee.dashboard');
-        }
+        $match =matchs::all();
+        
+
+        
+     return view('welcome')->with('match', $match);
+        
     }
 
     /**
