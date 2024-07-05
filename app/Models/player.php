@@ -32,8 +32,9 @@ class player extends Model
     {
         return $this->belongsTo(team::class);
     }
-    public function squadlist()
-    {
-        return $this->belongsTo(squadlist::class);
-    }
+    public function squadLists()
+{
+    return $this->belongsToMany(SquadList::class);
+}
+
 }

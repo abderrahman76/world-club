@@ -94,7 +94,7 @@
 <div class="buttons">
     <a href="{{ route('download', ['id' => $ticket->id]) }}">
         <button class="download"><i class="fas fa-file-pdf"></i>Download <b>PDF</b></button></a>
-    <a href="{{ route('dashboard') }}"><button class="back"><i class="fas fa-arrow-left"></i>Go Back</button></a>
+    <a href="{{ route('myticket') }}"><button class="back"><i class="fas fa-arrow-left"></i>Go Back</button></a>
   </div>
   
 <!-- partial -->

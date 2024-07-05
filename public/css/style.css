@@ -40,6 +40,9 @@ html::-webkit-scrollbar-thumb {
 body {
     overflow-x: hidden;
     background: var(--black);
+    margin-top: 59px;
+    background-color: #eeeee4;
+
 }
 
 section {
@@ -80,7 +83,7 @@ section {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(0, 0, 0, .3);
+    background: rgba(0, 0, 0, 0.676);
     padding: 1rem 9%;
     display: flex;
     align-items: center;
@@ -408,23 +411,30 @@ section {
 
 .matchs,
 .matchs-by-group {
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
     margin-left: 2rem;
     margin-right: 2rem;
     padding: 2rem 0;
-    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap: 2rem;
 }
 
 .match {
+    display: inline-block;
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
     background-color: aliceblue;
     position: relative;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
     box-shadow: 0 0 0.2rem 0.1rem var(--shadow);
     font-size: 1.6rem;
     font-weight: bold;
     color: var(--text-dark);
+    cursor: pointer;
 }
 
 .match-info {
@@ -550,9 +560,7 @@ img {
     justify-content: space-around;
 }
 
-p.sponsor {
-    font-size: 15px;
-}
+
 
 
 .stadium {
@@ -683,3 +691,202 @@ input[type="submit"].active,
 input[type="submit"]:hover {
     color: var(--main-color);
 }
+
+
+  .knockout-section {
+    position: relative;
+    height: 100vh;
+    background-image: url('.././img/knockout.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+  }
+  
+  .item {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .round-16-5 {
+    width: 176px;
+    height: 82px;
+    top: 78px;
+    left: 38px;
+    border-radius: 6px;
+  }
+  
+  .flags1 {
+    display: flex;
+    align-items: center;
+    left: 38px;
+    margin-left: 11px;
+
+  }
+  
+  .flag1 {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 13px;
+    margin-left: 20px;    
+  }
+  .alert {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .alert-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 0;
+  }
+  
+  .alert-message {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+  
+.home-team1,
+ .away-team1 {
+    margin: 0;
+    font-weight: bold;
+  }
+  .vs1 {
+    font-weight: bold;
+    font-size: 17px;
+    margin-left: 18px;
+
+  }
+  .round-16-6 {
+    width: 176px;
+    height: 82px;
+    top: 184px;
+    left: 38px;
+    border-radius: 6px;
+  }
+  .round-16-7 {
+    width: 176px;
+    height: 82px;
+    bottom: 158px;
+    left: 38px;
+    border-radius: 6px;
+  }
+  .round-16-8 {
+    width: 176px;
+    height: 82px;
+    bottom: 52px;
+    left: 38px;
+    border-radius: 6px;
+  }
+  
+  .round-16-1 {
+    width: 176px;
+    height: 82px;
+    top: 78px;
+    right: 59px;
+    border-radius: 6px;
+
+  }
+  .round-16-2 {
+    width: 176px;
+    height: 82px;
+    top: 184px;
+    right: 59px;
+    border-radius: 6px;
+
+  }
+  .round-16-3 {
+    width: 176px;
+    height: 82px;
+    bottom: 158px;
+    right: 59px;
+    border-radius: 6px;
+
+  }
+  .round-16-4 {
+    width: 176px;
+    height: 82px;
+    bottom: 52px;
+    right: 59px;
+    border-radius: 6px;
+
+  }
+
+  .quarter-1 {
+    width: 176px;
+    height: 82px;
+    top: 129.5px;
+    right: 257px;
+    border-radius: 6px;
+
+  }
+  .quarter-2 {
+    width: 176px;
+    height: 82px;
+    bottom: 107px;
+    right: 257px;
+    border-radius: 6px;
+
+  }
+  .quarter-3 {
+    width: 176px;
+    height: 82px;
+    top: 129.5px;
+    left: 237px;
+    border-radius: 6px;
+
+  }
+  .quarter-4 {
+    width: 176px;
+    height: 82px;
+    bottom: 107px;
+    left: 237px;
+    border-radius: 6px;
+
+  }
+
+  .semi-1 {
+    width: 176px;
+    height: 82px;
+    bottom: 238.3px;
+    right: 456px;
+    border-radius: 6px;
+
+  }
+
+  .semi-2 {
+    width: 176px;
+    height: 82px;
+    bottom: 238.3px;
+    left: 435px;
+    border-radius: 6px;
+
+  }
+
+  .third {
+    width: 176px;
+    height: 82px;
+    top: 81px;
+    left: 536.5px;
+    border-radius: 6px;
+
+  }
+
+
+  .final {
+    width: 176px;
+    height: 82px;
+    bottom: 31px;
+    left: 536.5px;
+    border-radius: 6px;
+
+  }
+  
+  

@@ -16,7 +16,9 @@ class result extends Model
         'team2_possession',
         'fullTime',
         'winner_id',
-        'match_id',	
+        'match_id',
+        'isValid',
+        'message',
     ];
     public function match()
     {

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->float('team1_possession');
             $table->float('team2_possession');
             $table->integer('fullTime');
+            $table->string('isValid')->default('waiting');
+            $table->string('message')->nullable();
             $table->foreignId('winner_id')
             ->constrained('teams')
             ->onDelete('cascade');

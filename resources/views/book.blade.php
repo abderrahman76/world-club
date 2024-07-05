@@ -9,8 +9,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />                     
 </head>
 <body>
+  @extends('layouts\header')
+
   <div class="min-h-screen bg-slate-200 dark:bg-slate-200">
-    @livewire('navigation-menu')
+
 <!-- partial:index.partial.html -->
 <div class="mainscreen">
       <div class="card">
@@ -23,7 +25,7 @@
         </div>
         <div class="rightside">
           
-          <a href=""><i class='fa-solid fa-xmark' style="float: right;"></i></a>
+          <a href="/"><i class='fa-solid fa-xmark' style="float: right;"></i></a>
 
           <form action="{{ route('checkout') }}" method="POST">
             @csrf

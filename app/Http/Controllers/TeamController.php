@@ -12,7 +12,9 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        $teams =team::all();
+        return view('teams')->with('teams', $teams);  
+    
     }
 
     /**
@@ -36,7 +38,14 @@ class TeamController extends Controller
      */
     public function show(team $team)
     {
-        //
+
+        $coach = $team->coach()->first();
+
+        // dd($players);
+        return view('showTeam')->with([
+            'team' => $team,
+            'coach' => $coach
+        ]);
     }
 
     /**

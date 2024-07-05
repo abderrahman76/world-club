@@ -12,10 +12,7 @@ class MatchsController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->authorizeResource(matchs::class, 'match');
-    }
+    
 
     
     
@@ -24,8 +21,9 @@ class MatchsController extends Controller
      */
     public function index()
     {
-    
-        echo "salam zin";
+        
+        $matchs =matchs::all();
+        return view('viewmatchs')->with('matchs', $matchs);    
     }
 
     /**
@@ -49,7 +47,12 @@ class MatchsController extends Controller
      */
     public function show(matchs $match)
     {
-        //
+       
+        if($match->result  && $match->result->isValid == "valid"){
+            return view('matchresult')->with('match' , $match);
+        }else{
+        return view('matchinfo')->with('match' , $match);
+        }
     }
 
     /**

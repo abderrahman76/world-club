@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\coach;
+use App\Models\matchs;
 use Illuminate\Http\Request;
 
 class CoachController extends Controller
@@ -12,7 +13,8 @@ class CoachController extends Controller
      */
     public function index()
     {
-        //
+        $matchs =matchs::all();
+        return view('coachMatchs')->with('matchs', $matchs);  
     }
 
     /**
@@ -34,9 +36,13 @@ class CoachController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(coach $coach)
+    public function show(matchs $match , coach $coach)
     {
-        //
+        $team = $coach->team;
+        return view('squadlist')->with([
+            'team' => $team,
+            'match' => $match
+        ]);  
     }
 
     /**

@@ -36,8 +36,8 @@ class FieldController extends Controller
      */
     public function show(field $field)
     {
-        //
-    }
+        return view('stadium')->with('field', $field);  
+        }
 
     /**
      * Show the form for editing the specified resource.

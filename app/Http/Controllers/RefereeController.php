@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\matchs;
 use App\Models\referee;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,11 @@ class RefereeController extends Controller
      */
     public function index()
     {
-        //
+        $referee = referee::where('name' , auth()->user()->name)->first();
+
+        $matchs = matchs::where('referee_id', $referee->id)->get();
+        // dd($matchs);
+        return view('refereeMatch')->with('matchs', $matchs); 
     }
 
     /**
@@ -36,9 +41,14 @@ class RefereeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(referee $referee)
+    public function show(matchs $match )
     {
-        //
+        $referee = referee::where('name' , auth()->user()->name)->first();
+        if($match->referee->id == $referee->id){
+            return view('resultconfirm')->with('match',$match);
+
+        }
+        
     }
 
     /**

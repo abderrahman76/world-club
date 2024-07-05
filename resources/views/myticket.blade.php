@@ -7,11 +7,11 @@
 
   <link href="https://fonts.googleapis.com/css?family=Poppins:900" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"><link rel="stylesheet" href="{{ asset('css/myticket.css') }}">
+<link rel="stylesheet" href="{{ asset("css/style.css") }}">
 
 </head>
 <body>
-  <x-app-layout>
-
+@extends('layouts\header')
 <div class="container">
     @foreach ($tickets as $ticket )
         
@@ -26,7 +26,7 @@
     
 </div>
 
-  
+{{-- @extends('layouts.footer') --}}
+
 </body>
 </html>
-</x-app-layout>

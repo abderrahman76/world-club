@@ -9,7 +9,9 @@ use App\Models\player;
 use App\Models\Result;
 use App\Models\team;
 use Filament\Forms;
+use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
@@ -34,21 +36,31 @@ class ResultResource extends Resource
         return $form
             ->schema([
                 Select::make('match_id')
-                ->relationship('match', 'name')
+                ->options(matchs::pluck('name', 'id'))
                 ->preload()
                 ->searchable()    
                 ->label('matchs')
                 ->reactive()
                 ->afterStateUpdated(fn (callable $set) => $set('winner_id', null))
                 ->required(),
-               Select::make('winner_id')
-                    ->options(function (callable $get){
-                        $match = matchs::find($get('match_id'));
-                        if(!$match){
-                        return team::all()->pluck('name', 'id');
-                        }
-                        return $match->teams->pluck('name','id');
-                    })
+                Select::make('winner_id')
+                ->options(function (callable $get) {
+                    $match = matchs::find($get('match_id'));
+                    $options = [];
+                    
+                    // Add the option with value 0
+                    $options[0] = 'draw';
+                    
+                    if (!$match) {
+                        $teams = team::all()->pluck('name', 'id');
+                        $options = $options + $teams->toArray();
+                    } else {
+                        $matchTeams = $match->teams->pluck('name', 'id');
+                        $options = $options + $matchTeams->toArray();
+                    }
+                    
+                    return $options;
+                })
                     ->preload()
                      ->searchable()    
                     ->label('winner')
@@ -66,20 +78,20 @@ class ResultResource extends Resource
                ->reactive()
                ->afterStateUpdated(fn (callable $set) => $set('team2_possession', null))
                ->required(),
-               Select::make('team2_possession')
-                    // ->numeric()
-                    ->options(function(callable $get){
-                        $team1 = $get('team1_possession');
-                         $team2[0]= 100-$team1;
-                        return $team2 ;
-                    })
-                    // ->disabled()
+               TextInput::make('team2_possession')
+                     ->numeric()
                     ->required(),
                 TextInput::make('fullTime')
                     ->numeric()
                     ->minValue(90)
                     ->maxValue(120)
                     ->required(),
+                    // Radio::make('isValid')
+                    // ->options([
+                    // 'waiting' => 'waiting',
+                    // ])
+                    // ->default('waiting')
+                    // ->required(),
                 Repeater::make('goal')
                     ->relationship('goals')
                     ->schema([
@@ -115,8 +127,8 @@ class ResultResource extends Resource
                         ->required(),
                         select::make('color')
                         ->options([
-                            'red',
-                            'yellow',
+                            'red'=> 'red',
+                            'yellow' => 'yellow',
                         ])->placeholder('card color')
                             ->required()
                             ,
@@ -126,7 +138,8 @@ class ResultResource extends Resource
                         ->maxValue(120)
                         ->required()
                     
-                    ])
+                        ]),
+                     
             ]);
             
     }
@@ -142,6 +155,7 @@ class ResultResource extends Resource
                 TextColumn::make('team1_possession')->toggleable(),
                 TextColumn::make('team2_possession')->toggleable(),
                 TextColumn::make('fullTime')->toggleable(),
+                TextColumn::make('isValid')->toggleable(),
                 TextColumn::make('created_at')
                     ->dateTime()->toggleable(),
                 TextColumn::make('updated_at')

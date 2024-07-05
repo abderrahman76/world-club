@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\matchs;
+use App\Models\news;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,19 +15,20 @@ class userControlle extends Controller
     public function index()
     {
         $match =matchs::all();
-        
+        $news =news::all();
 
         
-     return view('welcome')->with('match', $match);
+     return view('welcome')->with('news', $news);
         
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function admin()
     {
-        //
+        $matchs =matchs::all();
+        return view('adminResults')->with('matchs', $matchs);  
     }
 
     /**

@@ -51,7 +51,7 @@ class TeamResource extends Resource
                 TextInput::make('image')
                     ->url()
                     ->required()
-                    ->label('logo'),
+                    ->label('banner'),
                     TextInput::make('flag')
                     ->url()
                     ->required(),
@@ -74,7 +74,8 @@ class TeamResource extends Resource
                         'D' => 'D',
                         'E' =>'E',
                         'F' =>'F',
-                        'G'=> 'G'
+                        'G'=> 'G',
+                        'H' => 'H'
                     ])
                     ->required(),
                     TextInput::make('points')

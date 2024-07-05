@@ -43,9 +43,9 @@ class fieldResource extends Resource
                 ->required()
                 ->maxLength(255),
                 TextInput::make('image')
-                ->url()
+                 ->url()
                 ->required()
-                ->maxLength(255),
+                ->maxLength(500),
             ]);
     }
 

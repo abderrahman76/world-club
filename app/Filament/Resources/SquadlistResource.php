@@ -68,13 +68,7 @@ class SquadlistResource extends Resource
                     ->required(),
                     Select::make('player')
                     ->multiple()
-                    ->options(function (callable $get){
-                        $team = team::find($get('team_id'));
-                        if(!$team){
-                        return team::all()->pluck('name', 'id');
-                        }
-                        return $team->players->pluck('name','id');
-                    })
+                    ->relationship('players', 'name')
                     ->maxItems(11)
                     ->preload(),
                     

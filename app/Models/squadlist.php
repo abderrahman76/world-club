@@ -20,14 +20,11 @@ class squadlist extends Model
     {
         return $this->belongsTo(matchs::class);
     }
-    public function matchs_team()
-    {
-        return $this->belongsTo(matchs_team::class);
-    }
+    
 
     public function players()
     {
-        return $this->belongsToMany(player::class);
+        return $this->belongsToMany(Player::class);
     }
 
     public function team()

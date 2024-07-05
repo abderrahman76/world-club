@@ -31,6 +31,11 @@ class MatchsResource extends Resource
     {
         return $form
             ->schema([
+                Select::make('teams')
+                ->multiple()
+                ->preload()
+                ->maxItems(2)
+                ->relationship('teams', 'name'),
                 TextInput::make('name')
                 ->maxLength(50)
                 ->required(),
@@ -71,10 +76,7 @@ class MatchsResource extends Resource
                     ->maxValue(200000),
                     TextInput::make('price')
                     ->numeric(),
-                    Select::make('teams')
-                    ->multiple()
-                    ->preload()
-                    ->relationship('teams', 'name')
+                   
             ]);
     }
 

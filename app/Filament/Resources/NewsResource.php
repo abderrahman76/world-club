@@ -10,6 +10,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -17,7 +18,7 @@ class NewsResource extends Resource
 {
     protected static ?string $model = News::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
     public static function form(Form $form): Form
     {
@@ -27,9 +28,12 @@ class NewsResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('description')
+                    ->url()
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->label('link'),
                 Forms\Components\TextInput::make('image')
+                    ->url()
                     ->required()
                     ->maxLength(255),
             ]);
@@ -39,9 +43,14 @@ class NewsResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('image')->toggleable()->circular(),
                 Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('description'),
-                Tables\Columns\TextColumn::make('image'),
+                Tables\Columns\TextColumn::make('description')
+                ->tooltip(fn (News $record): string => "{$record->details}")
+                ->limit(30)
+                ->sortable()
+                ->searchable()
+                ->toggleable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')

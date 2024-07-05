@@ -49,17 +49,10 @@ class PlayerResource extends Resource
                 Select::make('position')
                     ->options([
                     "Goalkeeper" =>"Goalkeeper",
-                    "Right Back"=>"Right Back",
-                    "Left Back"=>"Left Back",
-                    "Center Back"=>"Center Back",
-                    "Sweeper"=>"Sweeper",
-                    "Defensive Midfielder"=>"Defensive Midfielder",
-                    "Central Midfielder"=> "Central Midfielder",
-                    "Attacking Midfielder"=>"Attacking Midfielder",
-                    "Left Winger"=>"Left Winger",
-                    "Right Winger"=>"Right Winger",
+                    "Deffender" =>"Deffender",
+                    "Midfielder"=> "Midfielder",
                     "Forward"=>"Forward",
-                    "Striker"=>"Striker",
+                    
 
                     ])
                     ->required(),

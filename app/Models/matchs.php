@@ -29,7 +29,7 @@ class matchs extends Model
     }
     public function result()
     {
-        return $this->hasOne(result::class);
+        return $this->hasOne(Result::class, 'match_id');
     }
 
     public function field()

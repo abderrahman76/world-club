@@ -22,9 +22,10 @@
   }
   
   body {
-    background-color: #E6E5E1;
+    background-color: #eeeee4;
     /* width: 100vw; */
     /* height: 100vh; */
+    margin-top: 50px;
   display: flexbox;
   z-index: 1o;
   }
@@ -195,4 +196,19 @@
     bottom: 16px;
     right: 16px;
     width: 100px;
+  }
+  footer {
+    background-color: #ff0000;
+    padding: 20px;
+    height: 200px;
+  }
+  .column {
+    display: flex;
+    justify-content: space-around;
+  }
+  .column img {
+    width: 140px;
+    height: 100px;
+    object-fit: scale-down;
+    justify-content: space-around;
   }
